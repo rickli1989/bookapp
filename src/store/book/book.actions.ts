@@ -11,7 +11,7 @@ export class AddBookAction implements Action {
   public id: number;
 
   constructor(
-    public book: Book
+    public payload: Book
   ) {
     this.id = uuid();
   }
@@ -21,7 +21,7 @@ export class PopulateBooksAction implements Action {
   readonly type = POPULATE_BOOKS;
 
   constructor(
-    public Books: Book[]
+    public payload: Book[]
   ) { }
 }
 

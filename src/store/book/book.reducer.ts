@@ -10,11 +10,15 @@ export function BookReducer(state: Book[] = initialState, action: BookActions.Bo
         ...state,
         {
           id: action.id,
-          title: action.book.title,
-          category: action.book.category,
-          description: action.book.description,
+          title: action.payload.title,
+          category: action.payload.category,
+          description: action.payload.description,
         }
       ];
+    }
+
+    case BookActions.POPULATE_BOOKS: {
+      return action.payload;
     }
 
     default: {

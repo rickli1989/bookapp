@@ -16,10 +16,12 @@ import { MatSelectModule } from '@angular/material/select';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from '../store';
+import { BookListComponent } from './book-list/book-list.component';
 @NgModule({
   declarations: [
     AppComponent,
-    BookAddComponent
+    BookAddComponent,
+    BookListComponent
   ],
   imports: [
     BrowserModule,
