@@ -1,3 +1,46 @@
-<p>
-  book-add works!
-</p>
+<h1>Add Book</h1>
+
+<form [formGroup]="bookForm">
+  <mat-form-field class="full-width">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+  <div *ngIf="bookForm.controls.title.invalid && (bookForm.controls.title.dirty || bookForm.controls.title.touched)"
+      class="alert">
+      <div *ngIf="bookForm.controls.title.errors.required">
+        This Field is Required.
+      </div>
+      <div *ngIf="bookForm.controls.title.errors.maxlength">
+        You can enter only 30 characters.
+      </div>
+  </div>
+  
+  <mat-form-field class="full-width">
+    <mat-select placeholder="Category" formControlName="category">
+      <mat-option *ngFor="let c of values" [value]="c">
+        {{c}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+    <div *ngIf="bookForm.controls.category.invalid && (bookForm.controls.category.dirty || bookForm.controls.category.touched)"
+      class="alert">
+      <div *ngIf="bookForm.controls.category.errors.required">
+        This Field is Required.
+      </div>
+  </div>
+  
+  <mat-form-field class="full-width">
+    <textarea rows="5" matInput placeholder="Description" formControlName="description"></textarea>
+  </mat-form-field>
+    <div *ngIf="bookForm.controls.description.invalid && (bookForm.controls.description.dirty || bookForm.controls.description.touched)"
+      class="alert">
+      <div *ngIf="bookForm.controls.description.errors.required">
+        This Field is Required.
+      </div>
+  </div>
+</form>
+
+<div mat-dialog-actions class="actionButtons">
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <button mat-button [disabled]="!bookForm.valid" [mat-dialog-close]="bookForm.value" cdkFocusInitial mat-raised-button color="primary">Save</button>
+</div>

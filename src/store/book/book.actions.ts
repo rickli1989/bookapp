@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Book } from './book.model';
-import uuidv4 from 'uuid/v4';
+import uuid from 'uuid/v4';
 import { CategoryEnum } from './book.types';
 
 export const ADD_BOOK = '[Book] add';
@@ -11,11 +11,9 @@ export class AddBookAction implements Action {
   public id: number;
 
   constructor(
-    public title: string,
-    public category: CategoryEnum,
-    public description: string,
+    public book: Book
   ) {
-    this.id = uuidv4();
+    this.id = uuid();
   }
 }
 

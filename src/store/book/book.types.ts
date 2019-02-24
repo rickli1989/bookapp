@@ -1,5 +1,5 @@
 export enum CategoryEnum {
-  drama,
-  comedy,
-  sport
+  drama = 1,
+  comedy = 2,
+  sport = 3
 }
