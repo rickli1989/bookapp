@@ -138,5 +138,8 @@
       }
     }
   },
-  "defaultProject": "BookApp"
+  "defaultProject": "BookApp",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
