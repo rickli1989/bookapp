@@ -3,7 +3,7 @@
 <form [formGroup]="bookForm">
   <mat-form-field class="full-width">
     <mat-label>Title</mat-label>
-    <input matInput formControlName="title">
+    <input matInput formControlName="title" name="title">
   </mat-form-field>
   <div *ngIf="bookForm.controls.title.invalid && (bookForm.controls.title.dirty || bookForm.controls.title.touched)"
       class="alert">
@@ -16,7 +16,7 @@
   </div>
   
   <mat-form-field class="full-width">
-    <mat-select placeholder="Category" formControlName="category">
+    <mat-select placeholder="Category" formControlName="category" name="category">
       <mat-option *ngFor="let c of values" [value]="c">
         {{c}}
       </mat-option>
@@ -30,7 +30,7 @@
   </div>
   
   <mat-form-field class="full-width">
-    <textarea rows="5" matInput placeholder="Description" formControlName="description"></textarea>
+    <textarea rows="5" matInput placeholder="Description" formControlName="description" name="description"></textarea>
   </mat-form-field>
     <div *ngIf="bookForm.controls.description.invalid && (bookForm.controls.description.dirty || bookForm.controls.description.touched)"
       class="alert">
@@ -42,5 +42,5 @@
 
 <div mat-dialog-actions class="actionButtons">
   <button mat-button (click)="onCancelClick()">Cancel</button>
-  <button mat-button [disabled]="!bookForm.valid" [mat-dialog-close]="bookForm.value" cdkFocusInitial mat-raised-button color="primary">Save</button>
+  <button mat-button [disabled]="!bookForm.valid" [mat-dialog-close]="bookForm.value" cdkFocusInitial mat-raised-button color="primary" id="saveBtn">Save</button>
 </div>

@@ -8,9 +8,20 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should be able to click add book button', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Welcome to BookApp!');
+    page.clickAdd();
+  });
+
+  it('should be able to fill data', () => {
+    page.addBook();
+  });
+
+  it('book list section should have book', () => {
+    browser.waitForAngular();
+    browser.driver.sleep(1000);
+    const bookList = page.getBookList();
+    expect(bookList).toEqual(1);
   });
 
   afterEach(async () => {
