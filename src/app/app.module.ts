@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -17,6 +18,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { reducers, metaReducers } from '../store';
 import { BookListComponent } from './book-list/book-list.component';
+import { BookService } from './app.component.service';
+import { effects } from '../store/index';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,13 +39,15 @@ import { BookListComponent } from './book-list/book-list.component';
     MatInputModule,
     MatSelectModule,
     StoreModule.forRoot(reducers, { metaReducers }),
+    EffectsModule.forRoot(effects),
     !environment.production ? StoreDevtoolsModule.instrument() : []
   ],
   entryComponents: [
     BookAddComponent
   ],
   providers: [
-    MatDialogModule
+    MatDialogModule,
+    BookService
   ],
   bootstrap: [AppComponent]
 })

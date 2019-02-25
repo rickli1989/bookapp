@@ -4,7 +4,7 @@ import { CategoryEnum } from './book.types';
 describe('Redux: BookReducer', () => {
 
   it('should return a new state with new book: AddBookAction', () => {
-    const action = new BooksAction.AddBookAction({
+    const action = new BooksAction.AddBookActionSuccess({
       id: '123',
       title: 'testNew',
       description: 'testNew',
@@ -28,7 +28,7 @@ describe('Redux: BookReducer', () => {
       description: 'testNew',
       category: CategoryEnum.comedy
     }];
-    const action = new BooksAction.PopulateBooksAction(newBooks);
+    const action = new BooksAction.PopulateBooksActionSuccess(newBooks);
     const oldState = [{
       id: '121',
       title: 'testOld',

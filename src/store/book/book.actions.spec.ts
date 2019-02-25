@@ -17,9 +17,10 @@ describe('Redux: BookActions', () => {
 
   describe('Test for PopulateBooksAction', () => {
     it('should return an action with book', () => {
-      const action = new BookActions.PopulateBooksAction([]);
+      const action = new BookActions.PopulateBooksAction();
       expect(action.type).toEqual(BookActions.POPULATE_BOOKS);
-      expect(action.payload).toEqual([]);
+      const actionSuccess = new BookActions.PopulateBooksActionSuccess([]);
+      expect(actionSuccess.payload).toEqual([]);
     });
 
   });
