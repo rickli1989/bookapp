@@ -29,8 +29,10 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-      const action = new BookActions.AddBookAction(result);
-      this.store.dispatch(action);
+      if (result) {
+        const action = new BookActions.AddBookAction(result);
+        this.store.dispatch(action);
+      }
     });
   }
 

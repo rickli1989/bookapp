@@ -8,7 +8,7 @@ export const POPULATE_BOOKS = '[Book] populate';
 
 export class AddBookAction implements Action {
   readonly type = ADD_BOOK;
-  public id: number;
+  public id: string;
 
   constructor(
     public payload: Book

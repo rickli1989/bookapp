@@ -1,16 +1,25 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { AppComponent } from './app.component';
-
+import { StoreModule, Store } from '@ngrx/store';
+import { MatDialogModule } from '@angular/material/dialog';
+import { reducers } from '../store/index';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MatDialogModule,
+        StoreModule.forRoot(reducers),
       ],
       declarations: [
         AppComponent
       ],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        MatDialogModule
+      ]
     }).compileComponents();
   }));
 
@@ -26,10 +35,4 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('BookApp');
   });
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to BookApp!');
-  });
 });
