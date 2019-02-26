@@ -12,13 +12,13 @@ export class BookService {
   createBook(book: Book) {
     console.log('Creating book: ');
     console.log(book);
-    const books = JSON.parse(localStorage.getItem('ngrx-book-list'));
+    const books = JSON.parse(localStorage.getItem('ngrx-book-list')) || [];
     localStorage.setItem('ngrx-book-list', JSON.stringify([...books, book]));
     return new BehaviorSubject(book);
   }
 
   loadBooks(): Observable<Book[]> {
     const books = localStorage.getItem('ngrx-book-list');
-    return new BehaviorSubject(JSON.parse(books));
+    return new BehaviorSubject(books ? JSON.parse(books) : []);
   }
 }

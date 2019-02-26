@@ -6,5 +6,5 @@ export const getState = (state: State) => state;
 export const getBooks = (state: State) => state.books;
 
 export const getBooksCount = createSelector(getBooks, (books: Book[]) => {
-  return books.length;
+  return books ? books.length : 0;
 });
